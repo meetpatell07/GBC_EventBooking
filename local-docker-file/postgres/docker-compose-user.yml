@@ -1,0 +1,22 @@
+version: '3.9'
+
+services:
+
+  postgres-user:
+    image: postgres:latest
+    ports:
+      - "5434:5432"
+    container_name: postgres-user
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=user_service_db
+
+    volumes:
+      - ./data/user:/var/lib/postgresql/data/
+      - ./init/user/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+
+
+
+
